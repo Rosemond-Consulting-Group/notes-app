@@ -1,73 +1,58 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import '../css/Board.css';
 import Note from './Note';
 
 
-class Board extends Component {
-  constructor () {
-    super();
+const Board = () => {
+  const [notes, setNotes] = useState([]);
 
-    this.state = {
-      notes: []
+  //use the spread(...) operator to add the new note to the end of the array
+  const addNote = () => {
+    let updatedNote =
+    {
+      id: Date.now(),
+      title: "New Note Title",
+      body: "New Note body"
     };
+
+    setNotes([...notes, updatedNote] );
   }
 
-  addNote = () => {
-    let notes = this.state.notes;
-    notes.push(
-      {
-        id: Date.now(),
-        title: "New Note Title",
-        body: "New Note body"
-      }
-    );
-    this.setState({ notes });
-  }
-
-  deleteNote = (id) =>{
-    let notes = this.state.notes;
-    //disable eslint check so that warning is eliminated in the terminal
-    // eslint-disable-next-line    
-    notes.map((note, index) => {
-      if (id === note.id) {
-        notes.splice(index,1);
-      }
-    });
-    this.setState({ notes });
+  //deleteNote filter out the note that matches the id passed in
+  const deleteNote = (id) => {
+    console.log("Delete note called with id="+ id)
+    setNotes( notes.filter(note => note.id !== id ));
   }
 
   // saveNote is used to update notes state with current values
   // from editing in Note.js
-  saveNote = (id, title, body) => {
-    console.log(id, title, body)
-    let notes = this.state.notes;
+  const saveNote = (id, title, body) => {
     //disable eslint check so that warning is eliminated in the terminal
     // eslint-disable-next-line
-    notes.map((note, index) => {
+    const updatedNotes = notes.map((note) => {
       if (id === note.id) {
-        notes[index].title = title;
-        notes[index].body = body;
+        return {...note, title, body }
       }
     });
 
-    this.setState({ notes });
+    setNotes( updatedNotes );
   }
-  render() {
-    return (
+
+  return (
       <div>
         <div className="div-board">
           <div className="row">
-            {this.state.notes.map(note => {
-              return <Note key={note.id} id={note.id} deleteHandler={this.deleteNote} saveHandler={this.saveNote} />
+          {notes.map((note) => {
+            return <Note key={note.id} note={note} deleteHandler={deleteNote} saveHandler={saveNote} />
             })}
           </div>
         </div>
         <div>
-          <button className="btn btn-success add-button" onClick={this.addNote}>Add</button>
+          <button className="btn btn-success add-button" onClick={addNote}>Add</button>
         </div>
       </div>
-    );
-  }
+  );
+
 }
 
 export default Board;

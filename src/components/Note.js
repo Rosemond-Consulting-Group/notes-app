@@ -1,76 +1,60 @@
-import React, {Component, createRef} from 'react';
+import React, {useState} from 'react';
 import '../css/Note.css';
-import PropTypes from 'prop-types';
 
-class Note extends Component {
-  constructor(props) {
-    super(props);
-     this.titleContent = createRef();
-     this.bodyContent = createRef();
-     this.state = {
-      title: this.props.title,
-      body: this.props.body,
-      editMode: false
-    }
+const Note = (props) => {
+  console.log("props = "+ JSON.stringify(props))
+  const [title, setTitle] = useState(props.note.title);
+  const [body, setBody] = useState(props.note.body);
+  const [editMode, setEditMode] = useState(false);
+
+  const handleEdit= () => {
+    setEditMode(true);
   }
 
-  handleEdit= () => {
-    this.setState({
-      editMode: true
-    });
+  const handleTitleChange = (event) => {
+     setTitle(event.target.value)
   }
 
-  handleSave = () => {
-    this.props.saveHandler(this.props.id, this.titleContent.current.value, this.bodyContent.current.value)
-    this.setState({
-      title: this.titleContent.current.value,
-      body: this.bodyContent.current.value,
-      editMode: false
-    });
+   const handleBodyChange = (event) => {
+     setBody(event.target.value)
   }
 
+  const handleSave = () => {
+    props.saveHandler(props.note.id,title, body)
+    setTitle(title);
+    setBody(body);
+    setEditMode(false);
+  }
 
-  render() {
-    return (
+  return (
    	 <div className='col-sm-6'>
     	<div className="card card-view">
         {
           //use ternary operator to replace use of JS before the return
-          this.state.editMode ?
+          editMode ?
             (
               <div className="card-body">
-                <textarea ref={this.titleContent} className="title-textarea" defaultValue={this.state.title}></textarea>
-                <textarea ref={this.bodyContent} className="body-textarea" defaultValue={this.state.body}></textarea>
-                <div><button className="btn btn-primary" onClick={this.handleSave}>Save</button></div>
+                <textarea onChange={handleTitleChange} className="title-textarea" defaultValue={title}></textarea>
+                <textarea onChange={handleBodyChange} className="body-textarea" defaultValue={body}></textarea>
+                <div><button className="btn btn-primary" onClick={handleSave}>Save</button></div>
               </div>
             )
             :
             (
               <div className="card-body">
-                <h5 className="card-title">{this.state.title}</h5>
-                <p>{this.state.body}</p>
+                <h5 className="card-title">{title}</h5>
+                <p>{body}</p>
                 <div>
-                  <button className="btn btn-info" onClick={this.handleEdit}>Edit</button><button className="btn btn-danger" onClick={()=>this.props.deleteHandler(this.props.id)}>Delete</button>
+                  <button className="btn btn-info" onClick={handleEdit}>Edit</button><button className="btn btn-danger" onClick={()=>props.deleteHandler(props.note.id)}>Delete</button>
                 </div>
               </div>
             )
         }
   		</div>
  	 </div>
-    );
-  }
+  );
+
 }
-
-
-Note.propTypes = {
-  title: PropTypes.string
-};
-
-Note.defaultProps = {
-  title: "A cool title",
-  body: "A cool body",
-};
-
 
 
 export default Note;
