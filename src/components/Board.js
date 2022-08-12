@@ -20,18 +20,18 @@ const Board = () => {
 
   //deleteNote filter out the note that matches the id passed in
   const deleteNote = (id) => {
-    console.log("Delete note called with id="+ id)
     setNotes( notes.filter(note => note.id !== id ));
   }
 
   // saveNote is used to update notes state with current values
-  // from editing in Note.js
+  // from editing in Note.js, use the spread(...) operator 
+  // tio set note then pass in updated fields
   const saveNote = (id, title, body) => {
     //disable eslint check so that warning is eliminated in the terminal
     // eslint-disable-next-line
     const updatedNotes = notes.map((note) => {
       if (id === note.id) {
-        return {...note, title, body }
+        return {...note, title, body } 
       }
     });
 
