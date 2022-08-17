@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import '../css/Board.css';
 import Note from './Note';
+import Header from './Header';
+import Footer from './Footer';
 
 
 const Board = () => {
@@ -39,7 +41,8 @@ const Board = () => {
   }
 
   return (
-      <div>
+    <div>
+        <Header />
         <div className="div-board">
           <div className="row">
           {notes.map((note) => {
@@ -49,7 +52,8 @@ const Board = () => {
         </div>
         <div>
           <button className="btn btn-success add-button" onClick={addNote}>Add</button>
-        </div>
+      </div>
+      <Footer />
       </div>
   );
 
