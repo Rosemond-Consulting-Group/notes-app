@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Board from './components/Board';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -9,7 +9,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <Router basename='/'>
-    <Board />
+    <Route exact path='/' component={Board}>
+    <Route path='/about' component={About}/>
   </Router>
 
 );
