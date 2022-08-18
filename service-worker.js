@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Rosemond-Consulting-Group.github.io/notes-app/precache-manifest.b16e11442cdcd9c52575a61d49af0565.js"
+  "/notes-app/precache-manifest.b6db6a05964a766b7226d4a4f53a176b.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Rosemond-Consulting-Group.github.io/notes-app/index.html", {
+workbox.routing.registerNavigationRoute("/notes-app/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });

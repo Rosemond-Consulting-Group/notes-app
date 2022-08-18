@@ -1,15 +1,15 @@
 {
-  "main.css": "/Rosemond-Consulting-Group.github.io/notes-app/static/css/main.a423ce6f.chunk.css",
-  "main.js": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/main.017ba5fa.chunk.js",
-  "main.js.map": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/main.017ba5fa.chunk.js.map",
-  "static/js/1.7ab2393a.chunk.js": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/1.7ab2393a.chunk.js",
-  "static/js/1.7ab2393a.chunk.js.map": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/1.7ab2393a.chunk.js.map",
-  "static/js/2.73726312.chunk.js": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/2.73726312.chunk.js",
-  "static/js/2.73726312.chunk.js.map": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/2.73726312.chunk.js.map",
-  "runtime~main.js": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/runtime~main.4cba4471.js",
-  "runtime~main.js.map": "/Rosemond-Consulting-Group.github.io/notes-app/static/js/runtime~main.4cba4471.js.map",
-  "static/css/main.a423ce6f.chunk.css.map": "/Rosemond-Consulting-Group.github.io/notes-app/static/css/main.a423ce6f.chunk.css.map",
-  "index.html": "/Rosemond-Consulting-Group.github.io/notes-app/index.html",
-  "precache-manifest.b16e11442cdcd9c52575a61d49af0565.js": "/Rosemond-Consulting-Group.github.io/notes-app/precache-manifest.b16e11442cdcd9c52575a61d49af0565.js",
-  "service-worker.js": "/Rosemond-Consulting-Group.github.io/notes-app/service-worker.js"
+  "main.css": "/notes-app/static/css/main.a423ce6f.chunk.css",
+  "main.js": "/notes-app/static/js/main.017ba5fa.chunk.js",
+  "main.js.map": "/notes-app/static/js/main.017ba5fa.chunk.js.map",
+  "static/js/1.7ab2393a.chunk.js": "/notes-app/static/js/1.7ab2393a.chunk.js",
+  "static/js/1.7ab2393a.chunk.js.map": "/notes-app/static/js/1.7ab2393a.chunk.js.map",
+  "static/js/2.73726312.chunk.js": "/notes-app/static/js/2.73726312.chunk.js",
+  "static/js/2.73726312.chunk.js.map": "/notes-app/static/js/2.73726312.chunk.js.map",
+  "runtime~main.js": "/notes-app/static/js/runtime~main.953c22dd.js",
+  "runtime~main.js.map": "/notes-app/static/js/runtime~main.953c22dd.js.map",
+  "static/css/main.a423ce6f.chunk.css.map": "/notes-app/static/css/main.a423ce6f.chunk.css.map",
+  "index.html": "/notes-app/index.html",
+  "precache-manifest.b6db6a05964a766b7226d4a4f53a176b.js": "/notes-app/precache-manifest.b6db6a05964a766b7226d4a4f53a176b.js",
+  "service-worker.js": "/notes-app/service-worker.js"
 }
