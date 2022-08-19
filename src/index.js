@@ -9,10 +9,10 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-  <HashRouter basename='/'>
+  <HashRouter basename={process.env.PUBLIC_URL}>
     <Routes>
       <Route exact path='/' element={<Board />} />
-      <Route path='/#/about' element={<About />} />
+      <Route path='/about' element={<About />} />
     </Routes>
   </HashRouter>
 
