@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Board from './components/Board';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import About from './components/About';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-  <Router basename='/'>
-    <Route exact path='/' component={Board}>
-    <Route path='/about' component={About}/>
-  </Router>
+  <HashRouter>
+    <Routes>
+      <Route exact path='/' element={<Board />} />
+      <Route path='/about' element={<About />} />
+    </Routes>
+  </HashRouter>
 
 );
 

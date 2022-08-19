@@ -42,7 +42,8 @@ const Board = () => {
 
   return (
     <div>
-        <Header />
+      <Header />
+      <div className="container">
         <div className="div-board">
           <div className="row">
           {notes.map((note) => {
@@ -52,6 +53,7 @@ const Board = () => {
         </div>
         <div>
           <button className="btn btn-success add-button" onClick={addNote}>Add</button>
+      </div>
       </div>
       <Footer />
       </div>
