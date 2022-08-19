@@ -18,7 +18,7 @@ const Nav = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto align-items-center">
             <li className="nav-item">
-              <a className="nav-link mx-2" href="/#"><i className="fas fa-plus-circle pe-2"></i>Home</a>
+              <a className="nav-link mx-2" href="/#/"><i className="fas fa-plus-circle pe-2"></i>Home</a>
             </li>
             <li className="nav-item">
               <a className="nav-link mx-2" href="/#/about"><i className="fas fa-bell pe-2"></i>About</a>
