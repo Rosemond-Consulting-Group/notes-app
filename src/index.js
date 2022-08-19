@@ -12,7 +12,7 @@ root.render(
   <HashRouter basename='/'>
     <Routes>
       <Route exact path='/' element={<Board />} />
-      <Route path='/about' element={<About />} />
+      <Route path='/#/about' element={<About />} />
     </Routes>
   </HashRouter>
 
