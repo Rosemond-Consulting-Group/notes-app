@@ -3,6 +3,8 @@ import '../css/Board.css';
 import Note from './Note';
 import Header from './Header';
 import Footer from './Footer';
+import { logout } from "../firebase";
+
 
 
 const Board = () => {
@@ -51,7 +53,8 @@ const Board = () => {
           </div>
         </div>
         <div>
-          <button className="btn btn-success add-button" onClick={addNote}>Add</button>
+        <button className="btn btn-success add-button" onClick={addNote}>Add</button>
+        <button className="btn btn-success logout-button" onClick={logout}>Logout</button>
       </div>
       <Footer />
       </div>
