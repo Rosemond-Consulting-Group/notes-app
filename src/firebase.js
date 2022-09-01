@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 
 import {
@@ -20,6 +21,7 @@ import {
   addDoc
 } from "firebase/firestore";
 
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDKGR1FOEUZeNUSzwnPzFRImU7QBCcjPtQ",
@@ -35,7 +37,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
+const fs_db = getFirestore(app); //firestore db
+const db = getDatabase(app);  //rtdb
 
 const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
@@ -100,6 +103,7 @@ const logout = () => {
 export {
   auth,
   db,
+  fs_db,
   signInWithGoogle,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,

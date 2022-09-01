@@ -3,12 +3,22 @@ import '../css/Board.css';
 import Note from './Note';
 import Header from './Header';
 import Footer from './Footer';
-import { logout } from "../firebase";
+import { db, logout } from "../firebase";
+import { ref, set, update, remove, onValue } from "firebase/database";
+import { doc, setDoc } from "firebase/firestore"; 
 
 
 
 const Board = () => {
   const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    return onValue(ref(db, '/notes'), querySnapShot => {
+      let data = querySnapShot.val() || [];
+      console.log("data from rt db load is: "+ JSON.stringify(data), Object.values(data));
+      setNotes(Object.values(data));
+    });
+  }, []);
 
   //use the spread(...) operator to add the new note to the end of the array
   const addNote = () => {
@@ -19,11 +29,13 @@ const Board = () => {
       body: "New Note body"
     };
 
+    set(ref(db, 'notes/' + updatedNote.id), updatedNote);
     setNotes([...notes, updatedNote] );
   }
 
   //deleteNote filter out the note that matches the id passed in
   const deleteNote = (id) => {
+    remove(ref(db, 'notes/' + id))
     setNotes( notes.filter(note => note.id !== id ));
   }
 
@@ -35,10 +47,12 @@ const Board = () => {
     // eslint-disable-next-line
     const updatedNotes = notes.map((note) => {
       if (id === note.id) {
-        return {...note, title, body } 
+        update(ref(db, 'notes/'+ id),{ title, body});
+        return {...note, title, body }
       }
     });
 
+    console.log("updated note = " + JSON.stringify(updatedNotes));
     setNotes( updatedNotes );
   }
 
