@@ -10,6 +10,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  updateProfile
 } from "firebase/auth";
 
 import {
@@ -45,7 +46,7 @@ const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
+    const q = query(collection(fs_db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(q);
     if (docs.docs.length === 0) {
       await addDoc(collection(db, "users"), {
@@ -74,7 +75,14 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await addDoc(collection(db, "users"), {
+    console.log("user = " + JSON.stringify(user));
+    await updateProfile(auth.currentUser, { displayName: name }).catch(
+        (err) => console.log(err)
+    );
+
+    console.log("currentUser = "+ JSON.stringify(auth.currentUser.displayName))
+
+    await addDoc(collection(fs_db, "users"), {
       uid: user.uid,
       name,
       authProvider: "local",

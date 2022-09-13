@@ -3,14 +3,16 @@ import '../css/Board.css';
 import Note from './Note';
 import Header from './Header';
 import Footer from './Footer';
-import { db, logout } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, fs_db, logout } from "../firebase";
 import { ref, set, update, remove, onValue } from "firebase/database";
-import { doc, setDoc } from "firebase/firestore"; 
-
+import { doc, setDoc, query, collection, getDocs, where } from "firebase/firestore"; 
 
 
 const Board = () => {
   const [notes, setNotes] = useState([]);
+  const [user, loading, error] = useAuthState(auth);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     return onValue(ref(db, '/notes'), querySnapShot => {
@@ -39,6 +41,7 @@ const Board = () => {
     setNotes( notes.filter(note => note.id !== id ));
   }
 
+
   // saveNote is used to update notes state with current values
   // from editing in Note.js, use the spread(...) operator 
   // tio set note then pass in updated fields
@@ -59,7 +62,11 @@ const Board = () => {
   return (
     <div>
         <Header />
-        <div className="div-board">
+      <div className="div-board">
+          <div>Logged in as
+            <div>{auth.currentUser.displayName}</div>
+            <div>{user.email}</div>
+          </div>
           <div className="row">
           {notes.map((note) => {
             return <Note key={note.id} note={note} deleteHandler={deleteNote} saveHandler={saveNote} />

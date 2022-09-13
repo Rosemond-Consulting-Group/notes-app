@@ -13,7 +13,9 @@ function Dashboard() {
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("uid", "==", user?.uid));
       const doc = await getDocs(q);
+      console.log("doc = "+ doc, docs.data[0])
       const data = doc.docs[0].data();
+      console.log("data = "+ data)
       setName(data.name);
     } catch (err) {
       console.error(err);
